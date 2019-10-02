@@ -5,7 +5,7 @@ ARG NODE_VERSION=10
 
 FROM node:${NODE_VERSION}-alpine
 
-WORKDIR /srv/sylius
+WORKDIR /app
 
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
@@ -13,6 +13,8 @@ RUN set -eux; \
 		gcc \
 		git \
 		make \
-		python \
-	;
+		python
 
+RUN set -eux; \
+	apk add --no-cache --virtual .build-deps \
+		npx
